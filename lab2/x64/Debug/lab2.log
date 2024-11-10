@@ -1,2 +1,8 @@
 ﻿  lab2.cpp
+C:\Users\chern\OneDrive\Рабочий стол\labs_prog\lab2\lab2.cpp(51,12): warning C4473: "printf": передано недостаточно аргументов для строки формата
+      C:\Users\chern\OneDrive\Рабочий стол\labs_prog\lab2\lab2.cpp(51,12):
+      заполнители и их параметры ожидают переменное число аргументов в количестве 3, но было предоставлено 2
+      C:\Users\chern\OneDrive\Рабочий стол\labs_prog\lab2\lab2.cpp(51,12):
+      отсутствующий вариативный аргумент "3" требуется для строки форматирования "%d"
+  
   lab2.vcxproj -> C:\Users\chern\OneDrive\Рабочий стол\labs_prog\lab2\x64\Debug\lab2.exe
