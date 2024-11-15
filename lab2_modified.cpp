@@ -116,6 +116,7 @@ public:
 };
 
 int main() {
+    // Статические переменные
     Author author1("John", "Doe");
     Book book1("The Great Book", author1, 2000, 300);
     Reader reader1("Jane", "Smith", 12345);
@@ -126,6 +127,7 @@ int main() {
     library1.addOrder(order1);
     library1.print();
 
+    // Динамические переменные
     Author* author2 = new Author("Alice", "Johnson");
     Book* book2 = new Book("The Amazing Book", *author2, 2010, 400);
     Reader* reader2 = new Reader("Bob", "Brown", 67890);
@@ -136,11 +138,43 @@ int main() {
     library2->addOrder(*order2);
     library2->print();
 
+    // Освобождение памяти
     delete author2;
     delete book2;
     delete reader2;
     delete order2;
     delete library2;
+
+    // Динамический массив объектов класса
+    const int size = 3;
+    Author* authors = new Author[size]{
+        Author("Author1", "LastName1"),
+        Author("Author2", "LastName2"),
+        Author("Author3", "LastName3")
+    };
+
+    for (int i = 0; i < size; ++i) {
+        authors[i].print();
+    }
+
+    delete[] authors;
+
+    // Массив динамических объектов класса
+    Author** dynamicAuthors = new Author * [size];
+    for (int i = 0; i < size; ++i) {
+        dynamicAuthors[i] = new Author("DynamicAuthor" + std::to_string(i + 1), "DynamicLastName" + std::to_string(i + 1));
+        dynamicAuthors[i]->print();
+    }
+
+    for (int i = 0; i < size; ++i) {
+        delete dynamicAuthors[i];
+    }
+    delete[] dynamicAuthors;
+
+    // Применение оператора работы со ссылками
+    Author authorRef("Reference", "Author");
+    Author& authorRefAlias = authorRef;
+    authorRefAlias.print();
 
     return 0;
 }
