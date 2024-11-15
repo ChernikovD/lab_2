@@ -160,16 +160,19 @@ int main() {
     delete[] authors;
 
     // Массив динамических объектов класса
-    Author** dynamicAuthors = new Author * [size];
-    for (int i = 0; i < size; ++i) {
-        dynamicAuthors[i] = new Author("DynamicAuthor" + std::to_string(i + 1), "DynamicLastName" + std::to_string(i + 1));
-        dynamicAuthors[i]->print();
+    Author* authors[2];
+    authors[0] = new Author("DynamicAuthor1", "DynamicLastName1");
+    authors[1] = new Author("DynamicAuthor2", "DynamicLastName2");
+
+    for (int i = 0; i < 2; i++)
+    {
+        authors[i].print;
+        std::cout << '\n';
     }
 
-    for (int i = 0; i < size; ++i) {
-        delete dynamicAuthors[i];
+    for (int i = 0; i < 2; i++) {
+        delete authors[i];
     }
-    delete[] dynamicAuthors;
-    
+
     return 0;
 }
