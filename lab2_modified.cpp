@@ -170,11 +170,6 @@ int main() {
         delete dynamicAuthors[i];
     }
     delete[] dynamicAuthors;
-
-    // Применение оператора работы со ссылками
-    Author authorRef("Reference", "Author");
-    Author& authorRefAlias = authorRef;
-    authorRefAlias.print();
-
+    
     return 0;
 }
