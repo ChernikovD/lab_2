@@ -4,164 +4,143 @@
 #include <vector>
 #define MAX 100
 
-// Класс Author представляет автора книги
 class Author {
 private:
-    std::string firstName; // Имя автора
-    std::string lastName;  // Фамилия автора
+    std::string firstName;
+    std::string lastName;
 
 public:
-    // Конструктор для инициализации автора
     Author(const std::string& firstName, const std::string& lastName)
         : firstName(firstName), lastName(lastName) {}
 
-    // Метод для вывода информации об авторе
     void print() const {
         std::cout << "Author: " << firstName << " " << lastName << std::endl;
     }
 };
 
-// Класс Book представляет книгу
 class Book {
 private:
-    std::string title; // Название книги
-    Author author;   // Автор книги
-    int year;        // Год издания
-    int pages;       // Количество страниц
+    std::string title;
+    Author author;
+    int year;
+    int pages;
 
 public:
-    // Конструктор для инициализации книги
     Book(const std::string& title, const Author& author, int year, int pages)
         : author(author), year(year), pages(pages), title(title) {}
 
-    // Метод для вывода информации о книге
     void print() const {
         std::cout << "Book: " << title << ", Year: " << year << ", Pages: " << pages << std::endl;
-        author.print(); // Вывод информации об авторе
+        author.print();
     }
 };
 
-// Класс Reader представляет читателя
 class Reader {
 private:
-    std::string firstName; // Имя читателя
-    std::string lastName;  // Фамилия читателя
-    int readerID;        // ID читателя
+    std::string firstName;
+    std::string lastName;
+    int readerID;
 
 public:
-    // Конструктор для инициализации читателя
     Reader(const std::string& firstName, const std::string& lastName, int readerID)
         : firstName(firstName), lastName(lastName), readerID(readerID) {}
 
-    // Метод для вывода информации о читателе
     void print() const {
         std::cout << "Reader: " << firstName << " " << lastName << ", ID: " << readerID << std::endl;
     }
 };
 
-// Класс Order представляет заказ книги
 class Order {
 private:
-    Book book;         // Книга
-    Reader reader;     // Читатель
-    std::string orderDate; // Дата заказа
-    std::string returnDate; // Дата возврата
+    Book book;
+    Reader reader;
+    std::string orderDate;
+    std::string returnDate;
 
 public:
-    // Конструктор для инициализации заказа
     Order(const Book& book, const Reader& reader, const std::string& orderDate, const std::string& returnDate)
         : book(book), reader(reader), orderDate(orderDate), returnDate(returnDate) {}
 
-    // Метод для вывода информации о заказе
     void print() const {
         std::cout << "Order Date: " << orderDate << ", Return Date: " << returnDate << std::endl;
-        book.print(); // Вывод информации о книге
-        reader.print(); // Вывод информации о читателе
+        book.print();
+        reader.print();
     }
 };
 
-// Класс Library представляет библиотеку
 class Library {
 private:
-    std::string name; // Название библиотеки
-    std::string address; // Адрес библиотеки
-    std::vector<Book> books; // Массив книг
-    std::vector<Reader> readers; // Массив читателей
-    std::vector<Order> orders; // Массив заказов
-    int bookCount; // Количество книг
-    int readerCount; // Количество читателей
-    int orderCount; // Количество заказов
+    std::string name;
+    std::string address;
+    std::vector<Book> books;
+    std::vector<Reader> readers;
+    std::vector<Order> orders;
+    int bookCount;
+    int readerCount;
+    int orderCount;
 
 public:
-    // Конструктор для инициализации библиотеки
     Library(const std::string& name, const std::string& address)
         : name(name), address(address), bookCount(0), readerCount(0), orderCount(0) {}
 
-    // Метод для добавления книги в библиотеку
     void addBook(const Book& book) {
-        books.push_back(book); // Добавление книги
+        books.push_back(book);
         bookCount++;
     }
 
-    // Метод для добавления читателя в библиотеку
     void addReader(const Reader& reader) {
-        readers.push_back(reader); // Добавление читателя
+        readers.push_back(reader);
         readerCount++;
     }
 
-    // Метод для добавления заказа в библиотеку
     void addOrder(const Order& order) {
-        orders.push_back(order); // Добавление заказа
+        orders.push_back(order);
         orderCount++;
     }
 
-    // Метод для вывода информации о библиотеке
     void print() const {
         std::cout << "Library: " << name << ", Address: " << address << std::endl;
         std::cout << "Books:" << std::endl;
         for (const auto& book : books) {
-            book.print(); // Вывод информации о книге
+            book.print();
         }
         std::cout << "Readers:" << std::endl;
         for (const auto& reader : readers) {
-            reader.print(); // Вывод информации о читателе
+            reader.print();
         }
         std::cout << "Orders:" << std::endl;
         for (const auto& order : orders) {
-            order.print(); // Вывод информации о заказе
+            order.print();
         }
     }
 };
 
 int main() {
-    // Статические переменные
-    Author author1("John", "Doe"); // Создание автора
-    Book book1("The Great Book", author1, 2000, 300); // Создание книги
-    Reader reader1("Jane", "Smith", 12345); // Создание читателя
-    Order order1(book1, reader1, "2023-10-01", "2023-10-15"); // Создание заказа
-    Library library1("Central Library", "123 Main Street"); // Создание библиотеки
-    library1.addBook(book1); // Добавление книги в библиотеку
-    library1.addReader(reader1); // Добавление читателя в библиотеку
-    library1.addOrder(order1); // Добавление заказа в библиотеку
-    library1.print(); // Вывод информации о библиотеке
+    Author author1("John", "Doe");
+    Book book1("The Great Book", author1, 2000, 300);
+    Reader reader1("Jane", "Smith", 12345);
+    Order order1(book1, reader1, "2023-10-01", "2023-10-15");
+    Library library1("Central Library", "123 Main Street");
+    library1.addBook(book1);
+    library1.addReader(reader1);
+    library1.addOrder(order1);
+    library1.print();
 
-    // Динамические переменные
-    Author* author2 = new Author("Alice", "Johnson"); // Создание автора
-    Book* book2 = new Book("The Amazing Book", *author2, 2010, 400); // Создание книги
-    Reader* reader2 = new Reader("Bob", "Brown", 67890); // Создание читателя
-    Order* order2 = new Order(*book2, *reader2, "2023-10-02", "2023-10-16"); // Создание заказа
-    Library* library2 = new Library("City Library", "456 Elm St"); // Создание библиотеки
-    library2->addBook(*book2); // Добавление книги в библиотеку
-    library2->addReader(*reader2); // Добавление читателя в библиотеку
-    library2->addOrder(*order2); // Добавление заказа в библиотеку
-    library2->print(); // Вывод информации о библиотеке
+    Author* author2 = new Author("Alice", "Johnson");
+    Book* book2 = new Book("The Amazing Book", *author2, 2010, 400);
+    Reader* reader2 = new Reader("Bob", "Brown", 67890);
+    Order* order2 = new Order(*book2, *reader2, "2023-10-02", "2023-10-16");
+    Library* library2 = new Library("City Library", "456 Elm St");
+    library2->addBook(*book2);
+    library2->addReader(*reader2);
+    library2->addOrder(*order2);
+    library2->print();
 
-    // Освобождение памяти
-    delete author2; // Освобождение памяти автора
-    delete book2; // Освобождение памяти книги
-    delete reader2; // Освобождение памяти читателя
-    delete order2; // Освобождение памяти заказа
-    delete library2; // Освобождение памяти библиотеки
+    delete author2;
+    delete book2;
+    delete reader2;
+    delete order2;
+    delete library2;
 
     return 0;
 }
