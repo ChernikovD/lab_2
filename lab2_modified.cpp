@@ -147,31 +147,30 @@ int main() {
 
     // Динамический массив объектов класса
     const int size = 3;
-    Author* authors = new Author[size]{
+    Author* authors_1 = new Author[size]{
         Author("Author1", "LastName1"),
         Author("Author2", "LastName2"),
         Author("Author3", "LastName3")
     };
 
     for (int i = 0; i < size; ++i) {
-        authors[i].print();
+        authors_1[i].print();
     }
 
-    delete[] authors;
+    delete[] authors_1;
 
     // Массив динамических объектов класса
-    Author* authors[2];
-    authors[0] = new Author("DynamicAuthor1", "DynamicLastName1");
-    authors[1] = new Author("DynamicAuthor2", "DynamicLastName2");
+    Author* authors_2[2];
+    authors_2[0] = new Author("DynamicAuthor1", "DynamicLastName1");
+    authors_2[1] = new Author("DynamicAuthor2", "DynamicLastName2");
 
     for (int i = 0; i < 2; i++)
     {
-        authors[i].print;
-        std::cout << '\n';
+        authors_2[i]->print();
     }
 
     for (int i = 0; i < 2; i++) {
-        delete authors[i];
+        delete authors_2[i];
     }
 
     return 0;
